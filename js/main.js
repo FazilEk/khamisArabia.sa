@@ -6,7 +6,12 @@
     document.addEventListener("DOMContentLoaded", function () {
 
         fetch("components/navBar.html")
-            .then(response => response.text())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Navbar file not found: " + response.status);
+                }
+                return response.text();
+            })
             .then(data => {
 
                 document.getElementById("navbar-container").innerHTML = data;
