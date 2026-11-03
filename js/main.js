@@ -2,9 +2,10 @@
     "use strict";
 
 
+    // Loading NavBar Start
     document.addEventListener("DOMContentLoaded", function () {
 
-        fetch("navBar.html")
+        fetch("../components/navBar.html")
             .then(response => response.text())
             .then(data => {
 
@@ -21,17 +22,69 @@
                 document.querySelectorAll("#navbar-container .nav-link")
                     .forEach(link => {
 
-                        let linkPage = link.getAttribute("href");
+                        let linkPage = link.getAttribute("href").split("/").pop();
 
                         if (linkPage === currentPage) {
                             link.classList.add("active");
                         }
-
                     });
+            })
+            .catch(error => alert("Navbar loading error:"));
+    });
+    // Loading Navbar End
+
+    // About Us Container Loading Start
+    document.addEventListener("DOMContentLoaded", function () {
+
+        fetch("../about/abouts_Constants/about_Container.html")
+            .then(response => response.text())
+            .then(data => {
+
+                document.getElementById("about-container").innerHTML = data;
 
             })
-            .catch(error => console.error("Navbar loading error:", error));
+            .catch(error => alert("about us loading error:"));
     });
+    // About Us Container Loading END
+
+    // Fact Count Container Loading Start
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch("../constants/factCount_Container.html")
+            .then(response => response.text())
+            .then(data => {
+
+                document.getElementById("factCount-container").innerHTML = data;
+                $('[data-toggle="counter-up"]').counterUp({
+                    delay: 5,
+                    time: 2000
+                });
+
+            })
+            .catch(error => alert("fact count loading error:" + error));
+    });
+    // Fact Count Container Loading END
+
+    // Footer Container Loading Start
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch("../constants/footer_Container.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("footer-container").innerHTML = data;               
+            })
+            .catch(error => alert("footer loading error:" + error));
+    });
+    // Footer Container Loading END
+
+     // Copyright Container Loading Start
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch("../constants/copyright_Container.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("copyRight-container").innerHTML = data;               
+            })
+            .catch(error => alert("footer loading error:" + error));
+    });
+    // Copyright Container Loading END
 
     // Spinner
     var spinner = function () {
@@ -93,10 +146,7 @@
 
 
     // Facts counter
-    $('[data-toggle="counter-up"]').counterUp({
-        delay: 5,
-        time: 2000
-    });
+
 
 
     // Back to top button
