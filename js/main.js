@@ -8,7 +8,7 @@
         fetch("components/navBar.html")
             .then(response => {
                 if (!response.ok) {
-                    throw new Error("Navbar file not found: " + response.status);
+                    throw new Error(alert("Navbar file not found: " + response.status));
                 }
                 return response.text();
             })
