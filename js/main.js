@@ -5,7 +5,7 @@
     // Loading NavBar Start
     document.addEventListener("DOMContentLoaded", function () {
 
-        fetch("../components/navBar.html")
+        fetch("components/navBar.html")
             .then(response => response.text())
             .then(data => {
 
@@ -69,18 +69,18 @@
         fetch("../constants/footer_Container.html")
             .then(response => response.text())
             .then(data => {
-                document.getElementById("footer-container").innerHTML = data;               
+                document.getElementById("footer-container").innerHTML = data;
             })
             .catch(error => alert("footer loading error:" + error));
     });
     // Footer Container Loading END
 
-     // Copyright Container Loading Start
+    // Copyright Container Loading Start
     document.addEventListener("DOMContentLoaded", function () {
         fetch("../constants/copyright_Container.html")
             .then(response => response.text())
             .then(data => {
-                document.getElementById("copyRight-container").innerHTML = data;               
+                document.getElementById("copyRight-container").innerHTML = data;
             })
             .catch(error => alert("footer loading error:" + error));
     });
