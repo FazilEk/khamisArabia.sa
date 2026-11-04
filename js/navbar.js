@@ -5,12 +5,14 @@ const projectRoot = new URL("../", navbarScriptURL);
 document.addEventListener("DOMContentLoaded", async function () {
 
     try {
-
+        console.log('starting');
         const response = await fetch(
             new URL("components/navBar.html", projectRoot)
         );
 
         if (!response.ok) {
+            console.log('error no : 01');
+            console.log("Navbar not found: " + response.status);
             throw new Error("Navbar not found: " + response.status);
         }
 
@@ -21,6 +23,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         const container = document.getElementById("navbar-container");
 
         if (!container) {
+            console.log('error no : 02');
+            console.log("navbar-container not found");
             throw new Error("navbar-container not found");
         }
 
@@ -44,9 +48,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
 
         console.log("Navbar loaded successfully");
+        console.log('success uptohere');
 
     } catch (error) {
-
+        console.log('error no : 03');
         console.error("Navbar loading error:", error);
 
     }
