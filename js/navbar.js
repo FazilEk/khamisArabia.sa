@@ -1,4 +1,6 @@
 
+
+
 const navbarScriptURL = document.currentScript.src;
 const projectRoot = new URL("../", navbarScriptURL);
 
@@ -33,19 +35,27 @@ document.addEventListener("DOMContentLoaded", async function () {
         // Set active navigation link
         let currentPath = window.location.pathname;
 
+
         if (currentPath.endsWith("/")) {
             currentPath += "index.html";
         }
 
-        container.querySelectorAll(".nav-link").forEach(link => {
+        container.innerHTML = data;
 
-            const linkURL = new URL(link.getAttribute("href"));
+        const currentPage = window.location.pathname;
 
-            if (linkURL.pathname === currentPath) {
-                link.classList.add("active");
-            }
-
-        });
+        if (currentPage.includes("/about")) {
+            document.getElementById("aboutLink").classList.add("active");
+        }
+        else if (currentPage.includes("/service/")) {
+            document.getElementById("serviceLink").classList.add("active");
+        }
+        else if (currentPage.includes("/contact/")) {
+            document.getElementById("contactLink").classList.add("active");
+        }
+        else {
+            document.getElementById("homeLink").classList.add("active");
+        }
 
         console.log("Navbar loaded successfully");
         console.log('success uptohere');
@@ -55,5 +65,4 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.error("Navbar loading error:", error);
 
     }
-
 });

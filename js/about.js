@@ -7,7 +7,7 @@
     // About Us Container Loading Start
     document.addEventListener("DOMContentLoaded", function () {
 
-        fetch("../about/abouts_Constants/about_Container.html")
+        fetch("../constants/aboutus.html")
             .then(response => response.text())
             .then(data => {
 
