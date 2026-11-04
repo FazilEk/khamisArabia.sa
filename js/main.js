@@ -2,19 +2,33 @@
     "use strict";
 
 
-  
+    // Get project root from about.js location
+    const scriptURL = document.currentScript.src;
+    const projectRoot = new URL("../", scriptURL);
 
     // About Us Container Loading Start
     document.addEventListener("DOMContentLoaded", function () {
+        try {
+            fetch(new URL("constants/aboutus.html", projectRoot))
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("About HTML not found");
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    // Replace ROOT with actual project root
+                    data = data.replaceAll("{{ROOT}}", projectRoot.href);
 
-        fetch("constants/aboutus.html")
-            .then(response => response.text())
-            .then(data => {
+                    document.getElementById("about-container").innerHTML = data;
 
-                document.getElementById("about-container").innerHTML = data;
+                })
+                .catch(error => console.error("About loading error:", error));
+        }
+        catch (error) {
+            alert('index{aboutus.html}loadfailed' + error);
+        }
 
-            })
-            .catch(error => alert("about us loading error:"));
     });
     // About Us Container Loading END
 

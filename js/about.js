@@ -1,26 +1,37 @@
 (function ($) {
     "use strict";
 
-
-    
+    // Get project root from about.js location
+    const scriptURL = document.currentScript.src;
+    const projectRoot = new URL("../", scriptURL);
 
     // About Us Container Loading Start
+    // About Us Container Loading
     document.addEventListener("DOMContentLoaded", function () {
 
-        fetch("../constants/aboutus.html")
-            .then(response => response.text())
+        fetch(new URL("constants/aboutus.html", projectRoot))
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("About HTML not found");
+                }
+                return response.text();
+            })
             .then(data => {
+
+                // Replace ROOT with actual project root
+                data = data.replaceAll("{{ROOT}}", projectRoot.href);
 
                 document.getElementById("about-container").innerHTML = data;
 
             })
-            .catch(error => alert("about us loading error:"));
+            .catch(error => console.error("About loading error:", error));
+
     });
     // About Us Container Loading END
 
     // Fact Count Container Loading Start
     document.addEventListener("DOMContentLoaded", function () {
-        fetch("../constants/factCount_Container.html")
+        fetch(new url("../constants/factCount_Container.html", projectRoot))
             .then(response => response.text())
             .then(data => {
 
