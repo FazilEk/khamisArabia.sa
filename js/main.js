@@ -7,7 +7,7 @@
     // About Us Container Loading Start
     document.addEventListener("DOMContentLoaded", function () {
 
-        fetch("../about/abouts_Constants/about_Container.html")
+        fetch("about/abouts_Constants/about_Container.html")
             .then(response => response.text())
             .then(data => {
 
@@ -20,7 +20,7 @@
 
     // Fact Count Container Loading Start
     document.addEventListener("DOMContentLoaded", function () {
-        fetch("../constants/factCount_Container.html")
+        fetch("constants/factCount_Container.html")
             .then(response => response.text())
             .then(data => {
 
@@ -37,7 +37,7 @@
 
     // Footer Container Loading Start
     document.addEventListener("DOMContentLoaded", function () {
-        fetch("../constants/footer_Container.html")
+        fetch("constants/footer_Container.html")
             .then(response => response.text())
             .then(data => {
                 document.getElementById("footer-container").innerHTML = data;
@@ -48,7 +48,7 @@
 
     // Copyright Container Loading Start
     document.addEventListener("DOMContentLoaded", function () {
-        fetch("../constants/copyright_Container.html")
+        fetch("constants/copyright_Container.html")
             .then(response => response.text())
             .then(data => {
                 document.getElementById("copyRight-container").innerHTML = data;
