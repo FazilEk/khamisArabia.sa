@@ -264,3 +264,40 @@
 </body>
 
 </html>
+
+
+  <!-- // Loading NavBar Start
+    document.addEventListener("DOMContentLoaded", function () {
+
+        fetch("components/navBar.html")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(alert("Navbar file not found: " + response.status));
+                }
+                return response.text();
+            })
+            .then(data => {
+
+                document.getElementById("navbar-container").innerHTML = data;
+
+                // Get current page name
+                let currentPage = window.location.pathname.split("/").pop();
+                // Default page
+                if (currentPage === "") {
+                    currentPage = "index.html";
+                }
+
+                // Assign active class
+                document.querySelectorAll("#navbar-container .nav-link")
+                    .forEach(link => {
+
+                        let linkPage = link.getAttribute("href").split("/").pop();
+
+                        if (linkPage === currentPage) {
+                            link.classList.add("active");
+                        }
+                    });
+            })
+            .catch(error => alert("Navbar loading error:"));
+    });
+    // Loading Navbar End -->
