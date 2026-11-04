@@ -1,45 +1,19 @@
-document.addEventListener("DOMContentLoaded", async function () {
+// Get project root from navbar.js location
+const scriptURL = new URL(
+    document.querySelector('script[src*="navbar.js"]').src
+);
 
-    const container = document.getElementById("navbar-container");
+const projectRoot = new URL("../", scriptURL);
 
-    // Automatically find the root folder of the project
-    const script = document.querySelector('script[src*="navbar.js"]');
-
-    const scriptURL = new URL(script.src);
-    const projectRoot = new URL("../", scriptURL);
-
-    try {
-
-        const response = await fetch(
-            new URL("components/navbar.html", projectRoot)
-        );
-
-        if (!response.ok) {
-            alert("Navbar loading failed: " + response.status);
-            throw new Error("Navbar loading failed: " + response.status);
-        }
-
-        let data = await response.text();
-
-        // Replace project root placeholder
+// Load navbar
+fetch(new URL("components/navBar.html", projectRoot))
+    .then(response => {
+        if (!response.ok) throw new Error("Navbar not found");
+        return response.text();
+    })
+    .then(data => {
         data = data.replaceAll("{{ROOT}}", projectRoot.href);
-        container.innerHTML = data;
 
-        // Active navigation link
-        const currentURL = window.location.pathname;
-
-        container.querySelectorAll(".nav-link").forEach(link => {
-
-            const linkURL = new URL(link.href);
-
-            if (linkURL.pathname === currentURL) {
-                link.classList.add("active");
-            }
-
-        });
-
-    } catch (error) {
-        alert("Navbar loading error:" + error);
-        console.error("Navbar loading error:", error);
-    }
-});
+        document.getElementById("navbar-container").innerHTML = data;
+    })
+    .catch(error => console.error(error));
