@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         const response = await fetch(
             new URL("components/navBar.html", projectRoot)
         );
-
         if (!response.ok) {
             console.log('error no : 01');
             console.log("Navbar not found: " + response.status);

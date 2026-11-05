@@ -91,7 +91,7 @@
 .navbar-light .navbar-nav .nav-link {
     position: relative;
     margin-right: 25px;
-    padding: 35px 0;
+    padding: 10px 0;
     color: var(--bs-white);
     font-size: 17px;
     font-weight: 400;
