@@ -33,7 +33,7 @@
 
     // Fact Count Container Loading Start
     document.addEventListener("DOMContentLoaded", function () {
-        fetch(new URL("../../constants/factCount_Container.html", projectRoot))
+        fetch(new URL("constants/factCount_Container.html", projectRoot))
             .then(response => response.text())
             .then(data => {
 
@@ -50,23 +50,43 @@
 
     // Footer Container Loading Start
     document.addEventListener("DOMContentLoaded", function () {
-        fetch("../../constants/footer_Container.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("footer-container").innerHTML = data;
+        fetch(new URL("constants/footer_Container.html", projectRoot))
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("footer HTML not found");
+                }
+                return response.text();
             })
-            .catch(error => alert("footer loading error:" + error));
+            .then(data => {
+
+                // Replace ROOT with actual project root
+                data = data.replaceAll("{{ROOT}}", projectRoot.href);
+
+                document.getElementById("footer-container").innerHTML = data;
+
+            })
+            .catch(error => console.error("footer loading error:", error));
     });
     // Footer Container Loading END
 
     // Copyright Container Loading Start
     document.addEventListener("DOMContentLoaded", function () {
-        fetch("../../constants/copyright_Container.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("copyRight-container").innerHTML = data;
+        fetch(new URL("constants/copyright_Container.html", projectRoot))
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("copyRight HTML not found");
+                }
+                return response.text();
             })
-            .catch(error => alert("footer loading error:" + error));
+            .then(data => {
+
+                // Replace ROOT with actual project root
+                data = data.replaceAll("{{ROOT}}", projectRoot.href);
+
+                document.getElementById("copyRight-container").innerHTML = data;
+
+            })
+            .catch(error => console.error("copyRight loading error:", error));
     });
     // Copyright Container Loading END
 
