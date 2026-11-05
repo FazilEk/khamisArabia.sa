@@ -36,7 +36,6 @@
         fetch(new URL("constants/factCount_Container.html", projectRoot))
             .then(response => response.text())
             .then(data => {
-
                 document.getElementById("factCount-container").innerHTML = data;
                 $('[data-toggle="counter-up"]').counterUp({
                     delay: 5,
@@ -53,14 +52,11 @@
         fetch(new URL("constants/footer_Container.html", projectRoot))
             .then(response => {
                 if (!response.ok) {
-                    throw new Error("footer HTML not found");
+                    throw new Error("About HTML not found");
                 }
                 return response.text();
             })
             .then(data => {
-
-                // Replace ROOT with actual project root
-                data = data.replaceAll("{{ROOT}}", projectRoot.href);
 
                 document.getElementById("footer-container").innerHTML = data;
 
@@ -71,6 +67,7 @@
 
     // Copyright Container Loading Start
     document.addEventListener("DOMContentLoaded", function () {
+
         fetch(new URL("constants/copyright_Container.html", projectRoot))
             .then(response => {
                 if (!response.ok) {
@@ -79,9 +76,6 @@
                 return response.text();
             })
             .then(data => {
-
-                // Replace ROOT with actual project root
-                data = data.replaceAll("{{ROOT}}", projectRoot.href);
 
                 document.getElementById("copyRight-container").innerHTML = data;
 
