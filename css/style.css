@@ -940,12 +940,11 @@
     display: flex;
     width: max-content;
     gap: 10px;
-    animation: partnerSlide 10s linear infinite;
+    animation: partnerSlide 15s linear infinite;
 }
 
 .partner-card {
-    width: 220px;
-    min-height: 100px;
+    min-height: 150px;
     flex-shrink: 0;
     padding: 20px;
     text-align: center;
@@ -982,6 +981,13 @@
 
 .partners-track:hover {
     animation-play-state: paused;
+}
+
+.partners-set-group {
+    display: flex;
+    gap: 10px;
+    padding-right: 10px;
+    flex-shrink: 0;
 }
 
 @keyframes partnerSlide {
