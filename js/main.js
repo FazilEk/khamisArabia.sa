@@ -5,10 +5,13 @@
     // Get project root from about.js location
     const scriptURL = document.currentScript.src;
     const projectRoot = new URL("../", scriptURL);
-
+    const homeButton = document.getElementById("company-logo-browser");
     // About Us Container Loading Start
     document.addEventListener("DOMContentLoaded", function () {
         try {
+            homeButton.href = new URL("img/khamis/favicon_io/android-chrome-512x512.png", projectRoot).href;
+
+
             fetch(new URL("constants/aboutus.html", projectRoot))
                 .then(response => {
                     if (!response.ok) {
