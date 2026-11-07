@@ -47,6 +47,35 @@
     });
     // Fact Count Container Loading END
 
+
+    // Brand Partners Container Loading Start
+    document.addEventListener("DOMContentLoaded", function () {
+        try {
+
+            fetch(new URL("constants/ourBrandPartners.html", projectRoot))
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Brand Partners HTML not found");
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    // Replace ROOT with actual project root
+                    data = data.replaceAll("{{ROOT}}", projectRoot.href);
+
+                    document.getElementById("ourBrandPartners-container").innerHTML = data;
+
+                })
+                .catch(error => console.error("Brand Partners loading error:", error));
+        }
+        catch (error) {
+            alert('Brand Partners loadfailed' + error);
+        }
+
+    });
+    // Brand Partners Container Loading END
+
+
     // Footer Container Loading Start
     document.addEventListener("DOMContentLoaded", function () {
         fetch(new URL("constants/footer_Container.html", projectRoot))

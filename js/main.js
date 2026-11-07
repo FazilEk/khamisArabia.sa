@@ -2,15 +2,15 @@
     "use strict";
 
 
-    // Get project root from about.js location
+    // Get project root from main.js location
     const scriptURL = document.currentScript.src;
     const projectRoot = new URL("../", scriptURL);
-    const homeButton = document.getElementById("company-logo-browser");
+    const company_logoBrowser = document.getElementById("company-logo-browser");
+    company_logoBrowser.href = new URL("img/khamis/favicon_io/android-chrome-512x512.png", projectRoot).href;
+
     // About Us Container Loading Start
     document.addEventListener("DOMContentLoaded", function () {
         try {
-            homeButton.href = new URL("img/khamis/favicon_io/android-chrome-512x512.png", projectRoot).href;
-
 
             fetch(new URL("constants/aboutus.html", projectRoot))
                 .then(response => {
@@ -51,6 +51,7 @@
             .catch(error => alert("fact count loading error:" + error));
     });
     // Fact Count Container Loading END
+
 
     // Footer Container Loading Start
     document.addEventListener("DOMContentLoaded", function () {

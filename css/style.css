@@ -928,3 +928,85 @@
 }
 
 /*** copyright end ***/
+
+
+.partners-slide {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.partners-track {
+    display: flex;
+    width: max-content;
+    gap: 10px;
+    animation: partnerSlide 10s linear infinite;
+}
+
+.partner-card {
+    width: 220px;
+    min-height: 100px;
+    flex-shrink: 0;
+    padding: 20px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+    transition: 0.3s ease;
+    flex: 0 0 240px;
+}
+
+.partner-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+}
+
+.partner-card img {
+    width: 100%;
+    height: 65px;
+    object-fit: contain;
+    margin-bottom: 12px;
+}
+
+.partner-card h6 {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.partner-card p {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 8px;
+}
+
+.partners-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes partnerSlide {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 576px) {
+    .partner-card {
+        width: 280px;
+        min-height: 180px;
+    }
+
+    .partners-track {
+        gap: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .partners-track {
+        animation: none;
+    }
+}
