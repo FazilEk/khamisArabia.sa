@@ -5,13 +5,13 @@ const projectRoot = new URL("../", navbarScriptURL);
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const homeButton = document.getElementById("homeButton"); 
+    const homeButton = document.getElementById("homeButton");
     const backToHome = document.getElementById("backToHome");
     if (homeButton) {
         homeButton.href = projectRoot.href;
     }
-    if(backToHome){
-        backToHome.href = projectRoot.href;
+    if (backToHome) {
+        backToHome.href = projectRoot.href; //new URL("pages/about/",projectRoot).href;
     }
 
 });
